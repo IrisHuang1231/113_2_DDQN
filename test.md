@@ -30,7 +30,7 @@
 + 或加號
 
 ### 圖片
-![測試](https://github.com/IrisHuang1231/113_Reinforcement_Learning/blob/main/images/unnamed.jpg)
+![測試](images/test.jpg)
 
 ### 連結
 [這是一個行內樣式的連結](https://www.google.com)
