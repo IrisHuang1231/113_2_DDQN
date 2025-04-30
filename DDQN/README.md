@@ -6,7 +6,7 @@ pip install -r requirements.txt
 
 pip list
 
-1.訓練模型
+1. 訓練模型
 
 python run.py --mode train
 
