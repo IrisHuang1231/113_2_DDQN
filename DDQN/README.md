@@ -1,4 +1,4 @@
-0. 下載所需套件
+1. 下載所需套件
 
 pip install -r requirements.txt
 
@@ -6,7 +6,7 @@ pip install -r requirements.txt
 
 pip list
 
-1. 訓練模型
+2. 訓練模型
 
 python run.py --mode train
 
@@ -14,7 +14,7 @@ python run.py --mode train
 
 python run.py --mode train -e 10
 
-2. 測試模型
+3. 測試模型
 
 python run.py --mode test --weights ./weights/202504301430-dqn.weights.h5 -e 500
 
