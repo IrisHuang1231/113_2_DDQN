@@ -6,16 +6,23 @@ from model import mlp
 class DDQNAgent(object):
     """ 一個簡單的 Double Deep Q 代理 """
     
-    def __init__(self, state_size, action_size):
+    def __init__(self, state_size, action_size, 
+                 gamma=0.9, 
+                 replay_memory_size =5000,
+                 epsilon_decay =0.98,
+                 learning_rate =0.01):
         self.state_size = state_size
         self.action_size = action_size
-        self.memory = deque(maxlen=2000)
-        self.gamma = 0.95  # 折扣率
-        self.epsilon = 1.0  # 探索率
+        self.epsilon = 1.0  
         self.epsilon_min = 0.01
-        self.epsilon_decay = 0.995
-        self.model = mlp(state_size, action_size)  # 主網路
-        self.target_model = mlp(state_size, action_size)  # 目標網路
+
+        self.gamma = gamma  # 折扣率
+        self.replay_memory_size = replay_memory_size
+        self.memory = deque(maxlen=replay_memory_size)
+        self.learning_rate = learning_rate
+        self.epsilon_decay = epsilon_decay
+        self.model = mlp(state_size, action_size,learning_rate)  # 主網路
+        self.target_model = mlp(state_size, action_size,learning_rate)  # 目標網路
         self.update_target_model()  # 初始化目標網路
 
     def update_target_model(self):

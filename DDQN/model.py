@@ -7,7 +7,7 @@ from keras.optimizers import Adam   #引入優化器
 選擇動作：選擇 Q 值最高的動作（或使用 ε-貪婪策略探索新動作）'''
 
 def mlp(n_obs, n_action, n_hidden_layer=1, n_neuron_per_layer=32,
-        activation='relu', loss='mse'):
+        activation='relu', loss='mse',learning_rate=0.007):
     #n_obs：輸入層的神經元數量，對應於每個觀察的特徵數量
     #n_action：輸出層的神經元數量，對應於每個行動的數量
     """ DNN (多層感知器, MLP) """
@@ -17,12 +17,14 @@ def mlp(n_obs, n_action, n_hidden_layer=1, n_neuron_per_layer=32,
     #第一層：輸入層
     model.add(Dense(n_neuron_per_layer, input_dim=n_obs, activation=activation))
     #隱藏層
-    for _ in range(n_hidden_layer):
+    #for _ in range(n_hidden_layer):
+    
+    for _ in range(int(n_hidden_layer)):
         model.add(Dense(n_neuron_per_layer, activation=activation))
     #輸出層
     model.add(Dense(n_action, activation='linear'))
     #編譯模型
-    model.compile(loss=loss, optimizer=Adam(learning_rate=0.007))
+    model.compile(loss=loss, optimizer=Adam(learning_rate=learning_rate))
     #模型結構
     print(model.summary())
     return model
